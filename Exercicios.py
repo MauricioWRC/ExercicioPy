@@ -404,59 +404,127 @@ OPÇÃO DESEJADA: '''))
         if menu == '5':
             loop = False
 
+def ex23():
+    def eh_primo(n):
+        if n < 2:
+            return False
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    numero = int(input("Digite um número: "))
+    if eh_primo(numero):
+        print(f"{numero} é primo.")
+    else:
+        print(f"{numero} não é primo.")
+
+def ex24():
+
+    """def eh_primo(n):
+        if n < 2:
+            return False
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    numero = int(input("Digite uma quantidade: "))
+    contador = 3  # Começa do 3 porque é o primeiro número primo ímpar após 2
+    verificador = [False, False, False]  # Lista de verificação de 3 primos
+    mod = 0  # Índice para controlar as alterações na lista
+
+    while verificador != [True, True, True]:
+        if contador >= numero:
+            print("Contador ultrapassou o número dado.")
+            break
+        if eh_primo(contador):
+            verificador[mod] = True  # Corrigido para fazer a atribuição correta
+            print(f"{contador} é primo.")
+            mod += 1  # Muda para o próximo índice da lista de verificação
+            if mod == len(verificador):
+                break  # Sai do loop quando os 3 valores da lista foram alterados para True
+        contador += 2  # Verifica apenas números ímpares a partir de 3 (primos ímpares)"""
+    
+    def eh_primo(n):
+        if n < 2:
+            return False
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    numero = int(input("Digite uma quantidade: "))
+    contador = 3  # Começa do 3 porque é o primeiro número primo ímpar após 2
+    verificador = [False]*numero  # Lista de verificação de 3 primos
+    mod = 0  # Índice para controlar as alterações na lista
+    while verificador != [True]*numero:
+        if eh_primo(contador):
+            verificador[mod] = True  # Corrigido para fazer a atribuição correta
+            print(f"{contador} é primo.")
+            mod += 1  # Muda para o próximo índice da lista de verificação
+            if mod == len(verificador):
+                break  # Sai do loop quando os 3 valores da lista foram alterados para True
+        contador += 2  # Verifica apenas números ímpares a partir de 3 (primos ímpares)
+def ex25():
+    n = int(input("Digite um número para descobrir sua raiz quadrada: "))
+    b = 2
+    tolerancia = 0.001
+    while True:
+        p = (b + (n / b)) / 2
+        quadrado_p = p * p
+        if abs(n - quadrado_p) < tolerancia:
+            break
+        b = p
+    print(f"A raiz quadrada aproximada de {n} é {p:.3f}")
+
+def ex26():
+    Dividendo = int(input("Dividendo: "))
+    backup = Dividendo
+    Divisor = int(input("Divisor: "))
+    contador=0
+    while Dividendo> Divisor:
+        Dividendo-=Divisor
+        contador+=1
+    print(f"A Divisão de {backup} por {Divisor} = {contador} com resto de {Dividendo}")
+
+def ex27():
+    funciona = True
+    while funciona == True:
+        print("Digite 0 para sair")
+        numero = int(input("Digite o numero para ver se é palíndromo: "))
+        digitos = [int(digito) for digito in str(numero)] #Precisa tranformar em string para depois colocar em numero para ficar certinho na lista
+        contador_Inicio = 0
+        contador_Fim = len(digitos)-1 #Vai ler a quantidade de itens na lista
+        verificador = True
+        if numero == 0:
+            break
+        while contador_Inicio != contador_Fim:
+            if digitos[contador_Inicio] != digitos[contador_Fim]:
+                print(f"O numero {numero} não é palíndromo")
+                verificador = False
+                break
+            contador_Inicio+=1
+            contador_Fim-=1
+        if verificador == True:
+            print(f"O numero {numero} é palindromo")
+
+
+
+opções = [None,ex1,ex2,ex3,ex4,ex5,ex6,ex7,ex8,ex9,
+              ex10,ex11,ex12,ex13,ex14,ex15,ex16,ex17,ex18,ex19,
+              ex20,ex21,ex22,ex23,ex24,ex25,ex26,ex27]
 funciona= True
 while funciona == True:
-    escolha = int(input('''Escolha um exercicio para ver a funcionalidade
+    escolha = int(input('''
+----------//-------------//-------------//------------//----------// ----
+Escolha um exercicio para ver a funcionalidade
 exercicios disponiveis do 1 ao 22 e digite 0 para sair,
 apenas digitar o numero do exercicio que funcionará no seu termianl, tmj
                     
 Numero do exercicio: '''))
+    print("----------//-------------//-------------//------------//----------// ----")
     if escolha == 0:
-        funciona == False
+        funciona=False
         break
-    if escolha == 1:
-        ex1()
-    if escolha == 2:
-        ex2()
-    if escolha == 3:
-        ex3()
-    if escolha == 4:
-        ex4()
-    if escolha == 5:
-        ex5()
-    if escolha == 6:
-        ex6()
-    if escolha == 7:
-        ex7()
-    if escolha == 8:
-        ex8()
-    if escolha == 9:
-        ex9()
-    if escolha == 10:
-        ex10()
-    if escolha == 11:
-        ex11()
-    if escolha == 12:
-        ex12()
-    if escolha == 13:
-        ex13()
-    if escolha == 14:
-        ex14()
-    if escolha == 15:
-        ex15()
-    if escolha == 16:
-        ex16()
-    if escolha == 17:
-        ex17()
-    if escolha == 18:
-        ex18()
-    if escolha == 19:
-        ex19()
-    if escolha == 20:
-        ex20()
-    if escolha == 21:
-        ex21()
-    if escolha == 22:
-        ex22()
-
-
+    if escolha!=0:
+        opções[escolha]()
+    else:
+        print("Escolha invalida.")
